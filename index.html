@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archived World - Discover History</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .date-picker {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .date-picker input[type="date"]::-webkit-calendar-picker-indicator {
+            display: block;
+            opacity: 0;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <img src="assets/book-open-svgrepo-com.svg" class="logo-icon" alt="">
+
+                <div class="logo-text">
+                    <h1>Archived World</h1>
+                    <p>Discover history, one day at a time</p>
+                </div>
+            </div>
+            <div class="date-picker">
+                <img src="assets/calender-svgrepo-com.svg" class="picker-icon" alt="">
+                <input type="date" id="history-date">
+            </div>
+        </header>
+
+        <main>
+            <!-- Date Banner -->
+            <div class="date-banner">
+                <div class="date-banner-pill" id="date-banner-text">Loading...</div>
+            </div>
+
+            <!-- Random Fact Hero -->
+            <section class="hero-fact">
+                <div class="fact-header">
+                    <span>Random Historical Fact</span>
+                    <button class="fact-share-btn" id="shuffle-fact" title="Shuffle fact">
+                        <img src="assets/shuffle-svgrepo-com.svg" alt="shuffle">
+                    </button>
+                </div>
+                <div class="fact-content" id="hero-fact-content">
+                    <div class="fact-year skeleton" style="width:80px;height:28px;margin-bottom:10px;"></div>
+                    <p class="skeleton" style="height:16px;margin-bottom:6px;"></p>
+                    <p class="skeleton" style="height:16px;width:70%;"></p>
+                </div>
+            </section>
+
+            <!-- Filter Buttons -->
+            <nav class="filters" id="filter-nav">
+                <button class="active" data-type="events">Events</button>
+                <button data-type="births">Births</button>
+                <button data-type="deaths">Deaths</button>
+                <button data-type="holidays">Holidays</button>
+                <button data-type="favorites" id="fav-filter-btn">❤ Favorites</button>
+            </nav>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search events by keyword or year...">
+            </div>
+
+            <!-- Events Grid -->
+            <section class="events-grid" id="events-grid">
+                <!-- Cards injected by JS -->
+            </section>
+        </main>
+
+        <!-- Footer / Pagination -->
+        <footer>
+            <div class="pagination">
+                <button class="page-btn disabled" id="prev-btn" disabled>
+                    <span>&lt;</span> Previous
+                </button>
+                <span class="page-info" id="page-info">Page 1 of 1</span>
+                <button class="page-btn" id="next-btn">
+                    Next <span>&gt;</span>
+                </button>
+            </div>
+            <p class="site-credit">Powered by Wikimedia API</p>
+        </footer>
+    </div>
+
+    <!-- Load scripts in correct order -->
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
